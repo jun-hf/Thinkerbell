@@ -1,0 +1,19 @@
+{% extends 'journal/base.html' %}
+
+{% block content %}
+
+    <p>Log: {{log}}</p>
+    <p>Entries</p>
+    <ul>
+        {% for entry in entries %}
+            <li>
+                <p>{{ entry.date_updated }}</p>
+                <p>{{ entry.content | linebreaks}}</p>
+            </li>
+            {% empty %}
+                <li>There are np entries for this Log</li>
+
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

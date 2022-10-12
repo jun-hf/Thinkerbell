@@ -5,10 +5,13 @@
 
     <ul>
         {% for log in logs %}
-            <li>{{ log }}</li>
+            <li><a href="{% url 'log_detail' log.id %}">{{ log }}</a></li>
+            
         {% empty %}
             <li>No log yet.</li>
         {% endfor %}
     </ul>
+
+    <a href="{% url 'new_log' %}">Add a new log</a>
 
 {% endblock content %}
