@@ -1,5 +1,4 @@
 from django import forms 
-
 from .models import Log, Entry
 
 class LogForm(forms.ModelForm):
@@ -11,6 +10,6 @@ class LogForm(forms.ModelForm):
 class EntryForm(forms.ModelForm):
     class Meta:
         model = Entry
-        feilds = ['text']
-        labels = {'text': 'Entry'}
-        widgets = {'text': forms.Textarea(attrs={'cols': 80})}
+        fields = ['content']
+        labels = {'content': 'Entry'}
+        widgets = {'content': forms.Textarea(attrs={'cols': 80})}

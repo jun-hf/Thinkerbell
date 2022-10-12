@@ -4,6 +4,9 @@
 
     <p>Log: {{log}}</p>
     <p>Entries</p>
+    <p>
+        <a href="{% url 'new_entry' log.id %}">Add new entry</a>
+    </p> 
     <ul>
         {% for entry in entries %}
             <li>

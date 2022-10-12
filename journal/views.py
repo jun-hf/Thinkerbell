@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Entry, Log
-from .forms import LogForm
+from .forms import LogForm, EntryForm
 
 # Create your views here.
 
@@ -31,3 +31,20 @@ def new_log(req):
 
     context = { 'form': form}
     return render(req, 'journal/new_log.html', context)
+
+def new_entry(req, log_id):
+    log = Log.objects.get(id=log_id)
+
+    if req.method != 'POST':
+        form = EntryForm()
+    else:
+        form = EntryForm(data=req.data)
+        if form.is_valid():
+            new_entry = form.save(commit=False)
+            new_entry.log = log
+            new_entry.save()
+
+            return redirect('log_detail', log_id=log_id)
+    
+    context = {'log': log, 'form': form}
+    return render(req, 'journal/new_entry.html', context)
