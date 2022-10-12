@@ -16,11 +16,11 @@ def test_entry_model():
     log = Log(content="I like to code")
     log.save() 
 
-    entry = Entry(topic=log, content="I like to code in python")
+    entry = Entry(log=log, content="I like to code in python")
     entry.save() 
 
-    assert entry.topic == log
+    assert entry.log == log
     assert entry.content == "I like to code in python"
     assert entry.date_added
     assert str(entry) == "I like to code in python"
-    
+

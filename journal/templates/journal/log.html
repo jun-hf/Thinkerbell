@@ -1,0 +1,14 @@
+{% extends "journal/base.html" %}
+
+{% block content %}
+    <p>Log</p>
+
+    <ul>
+        {% for log in logs %}
+            <li>{{ log }}</li>
+        {% empty %}
+            <li>No log yet.</li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}
