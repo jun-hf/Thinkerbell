@@ -48,3 +48,20 @@ def new_entry(req, log_id):
     
     context = {'log': log, 'form': form}
     return render(req, 'journal/new_entry.html', context)
+
+def edit_entry(req, entry_id):
+    entry = Entry.objects.get(id=entry_id)
+    log = entry.log 
+
+    if req.method != "POST":
+        form = EntryForm(instance=entry)
+
+    else:
+        form = EntryForm(instance=entry, data=req.POST)
+        if form.is_valid():
+            form.save() 
+            return redirect('log_detail', log_id=log.id)
+        
+    context = {'entry': entry, 'log': log, 'form': form}
+    return render(req, 'journal/edit_entry.html', context)
+    

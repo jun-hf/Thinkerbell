@@ -6,5 +6,6 @@ urlpatterns = [
     path('logs/', views.log_list, name='log'), # log page
     path('log/<int:log_id>/', views.log_detail, name='log_detail'),
     path('new_log/', views.new_log, name='new_log'),
-    path('new_entry/<int:log_id>/', views.new_entry, name='new_entry')
+    path('new_entry/<int:log_id>/', views.new_entry, name='new_entry'),
+    path('edit_entry/<int:entry_id>/', views.edit_entry, name='edit_entry')
 ]

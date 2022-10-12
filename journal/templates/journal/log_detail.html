@@ -12,6 +12,9 @@
             <li>
                 <p>{{ entry.date_updated }}</p>
                 <p>{{ entry.content | linebreaks}}</p>
+                <p>
+                    <a href="{% url 'edit_entry' entry.id %}">Edit entry</a>
+                </p>
             </li>
             {% empty %}
                 <li>There are np entries for this Log</li>

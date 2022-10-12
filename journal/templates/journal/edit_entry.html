@@ -1,0 +1,16 @@
+{% extends "journal/base.html" %}
+
+{% block content %}
+    <p><a href="{% url 'log_detail' log.id %}">{{log}}</a></p>
+
+    <p>Edit entry:</p>
+
+    <form action="{% url 'edit_entry' entry.id %}" method='post'>
+        {% csrf_token %}
+        {{ form.as_p}}
+
+        <button name="Submmit">Save changes</button>
+
+    </form>
+
+{% endblock content %}
